@@ -12,7 +12,9 @@ RUN	apt-get update && \
         libc-dev \
         libc++-dev \
         libboost-all-dev \
+        libsimgrid-dev \
         make \
+        simgrid \
         sudo
 
 RUN	useradd -m whisk && \
