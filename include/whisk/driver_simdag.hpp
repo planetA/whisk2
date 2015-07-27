@@ -1,6 +1,11 @@
 #include "driver.hpp"
 
-class SimDagDrv : public Driver
+namespace Whisk
 {
-  SimDagDrv(int &argc, char *argv[]);
-};
+  class SimDagDrv : public Driver
+  {
+  public:
+    SimDagDrv();
+    SimDagDrv(int &argc, char *argv[]);
+  };
+}

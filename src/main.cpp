@@ -1,10 +1,14 @@
+#include <string>
+#include <boost/program_options.hpp>
+
 #include <whisk.hpp>
 
-#include <boost/program_options.hpp>
+using namespace std;
+namespace po = boost::program_options;
 
 int main(int argc, char *argv[])
 {
-  Whisk::Driver *driver = Whisk::Wh::createDriver(argc, argv);
+  Whisk::Context::init(argc, argv);
 
   return 0;
 }
