@@ -1,4 +1,4 @@
-FROM debian:8
+FROM debian:stretch
 MAINTAINER Maksym Planeta <mplaneta@os.inf.tu-dresden.de>
 
 ENV	WHISK="whisk2"
