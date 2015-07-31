@@ -6,6 +6,9 @@ Driver::Driver()
 {
 }
 
-Driver::Driver(int &argc, char *argv[])
+void Driver::init(std::vector<std::string>& unparsed)
 {
+  if (unparsed.size() > 0)
+    throw std::runtime_error("Unrecognized options were passed");
+
 }

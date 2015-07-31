@@ -12,15 +12,17 @@ namespace Whisk
   {
     Context(int &argc, char *argv[]);
 
-    void createDriver(int &argc, char *argv[]);
+    void createDriver();
     // static Scheduler *createScheduler(int &argc, char *argv[]);
   public:
     static void init(int &argc, char *argv[]);
-  private:
+
     // Map of all configuration variables
-    boost::program_options ::variables_map vm;
+    po::variables_map vm;
+
+  private:
     std::unique_ptr<Driver> driver;
   };
 
-  // extern std::unique_ptr<Context> wh;
+  extern std::unique_ptr<Context> wh;
 }
