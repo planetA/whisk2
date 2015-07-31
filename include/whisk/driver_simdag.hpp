@@ -11,5 +11,7 @@ namespace Whisk
     void init();
     SimDagDrv();
     ~SimDagDrv();
+  private:
+    bool sd_init;
   };
 }

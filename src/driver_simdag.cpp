@@ -9,6 +9,7 @@
 using namespace Whisk;
 
 SimDagDrv::SimDagDrv()
+  : sd_init(false)
 {
 }
 
@@ -41,6 +42,7 @@ void SimDagDrv::init(std::vector<std::string> &unparsed)
   argv[argc] = 0;
 
   SD_init(&argc, argv);
+  sd_init = true;
 
   if (argv[1])
   {
@@ -50,5 +52,6 @@ void SimDagDrv::init(std::vector<std::string> &unparsed)
 
 SimDagDrv::~SimDagDrv()
 {
-  SD_exit();
+  if (sd_init)
+    SD_exit();
 }
