@@ -21,6 +21,7 @@ target_link_libraries(whisk
   ${Boost_PROGRAM_OPTIONS_LIBRARY}
   ${Boost_LOG_LIBRARY}
   ${CMAKE_THREAD_LIBS_INIT}
+  simgrid
   )
 
 install(TARGETS whisk DESTINATION bin)
