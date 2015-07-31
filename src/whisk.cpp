@@ -32,7 +32,7 @@ void Context::createDriver()
   {
     BOOST_LOG_TRIVIAL(fatal) << "Driver " << vm["driver"].as<std::string>()
                              << "is unknown";
-    throw std::runtime_error("Unknown driver specified.");
+    throw po::invalid_option_value("Unknown driver specified.");
   }
 
 }

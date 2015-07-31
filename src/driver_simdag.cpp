@@ -43,7 +43,7 @@ void SimDagDrv::init(std::vector<std::string> &unparsed)
 
   if (argv[1])
   {
-    throw std::runtime_error("Unrecognized options were passed");
+    throw po::unknown_option(argv[1]);
   }
 }
 
