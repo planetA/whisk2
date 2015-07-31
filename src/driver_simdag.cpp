@@ -16,7 +16,8 @@ void SimDagDrv::append_options(po::options_description &cmdline_options)
 {
   po::options_description drv_opt("SimDag driver options");
   drv_opt.add_options()
-    ("platform,p", po::value<std::string>(), "Set platform configuration file")
+    ("platform,p", po::value<std::string>()->required(),
+     "Set platform configuration file")
     ;
   cmdline_options.add(drv_opt);
 }
