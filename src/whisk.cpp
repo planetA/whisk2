@@ -3,8 +3,6 @@
 #include <boost/log/trivial.hpp>
 
 #include <whisk.hpp>
-#include <whisk/driver_simdag.hpp>
-#include <whisk/driver_mirror.hpp>
 
 namespace po = boost::program_options;
 
@@ -14,27 +12,6 @@ std::unique_ptr<Context> Whisk::wh;
 
 Context::Context(int &argc, char *argv[])
 {
-}
-
-void Context::createDriver()
-{
-  if (!vm.count("driver"))
-  {
-    BOOST_LOG_TRIVIAL(info) << "No driver specified. Using 'miror' driver.";
-    driver.reset(new MirrorDrv());
-  } else if (vm["driver"].as<std::string>() == "miror")
-  {
-    driver.reset(new MirrorDrv());
-  } else if (vm["driver"].as<std::string>() == "simdag")
-  {
-    driver.reset(new SimDagDrv());
-  } else
-  {
-    BOOST_LOG_TRIVIAL(fatal) << "Driver " << vm["driver"].as<std::string>()
-                             << "is unknown";
-    throw po::invalid_option_value("Unknown driver specified.");
-  }
-
 }
 
 void Context::init(int &argc, char *argv[])
@@ -119,7 +96,7 @@ void Context::init(int &argc, char *argv[])
     }
 
     // Create driver and parse driver's options
-    wh->createDriver();
+    wh->driver.reset(Driver::create());
 
     wh->driver->append_options(cmdline_options);
 

@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <boost/program_options.hpp>
+#include <boost/log/trivial.hpp>
 
 namespace Whisk
 {
@@ -21,5 +22,6 @@ namespace Whisk
     // update variables map
     Driver();
     virtual ~Driver() {};
+    static Driver *create();
   };
 }

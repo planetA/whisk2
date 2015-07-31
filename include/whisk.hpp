@@ -12,7 +12,6 @@ namespace Whisk
   {
     Context(int &argc, char *argv[]);
 
-    void createDriver();
     // static Scheduler *createScheduler(int &argc, char *argv[]);
   public:
     static void init(int &argc, char *argv[]);
