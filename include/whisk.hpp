@@ -25,9 +25,8 @@ namespace Whisk
 
     // Map of all configuration variables
     po::variables_map vm;
-
-  private:
     std::unique_ptr<Driver> driver;
+  private:
   };
 
   extern std::unique_ptr<Context> wh;

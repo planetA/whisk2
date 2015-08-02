@@ -6,6 +6,8 @@
 #include <whisk.hpp>
 #include <whisk/driver_simdag.hpp>
 
+#include "simdag/platform.hpp"
+
 using namespace Whisk;
 
 SimDagDrv::SimDagDrv()
@@ -48,6 +50,10 @@ void SimDagDrv::init(std::vector<std::string> &unparsed)
   {
     throw po::unknown_option(argv[1]);
   }
+
+  SD_create_environment(wh->vm["platform"].as<std::string>().c_str());
+
+  platform.reset(new Platform);
 }
 
 SimDagDrv::~SimDagDrv()

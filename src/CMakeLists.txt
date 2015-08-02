@@ -1,4 +1,4 @@
-file(GLOB whisk_SRC "[a-zA-Z]*.cpp")
+file(GLOB whisk_SRC "[a-zA-Z]*.cpp" "simdag/[a-zA-Z]*.cpp")
 add_executable(whisk ${whisk_SRC})
 
 FIND_PACKAGE(Boost 1.54 COMPONENTS program_options log REQUIRED )

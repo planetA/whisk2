@@ -4,8 +4,6 @@
 
 #include <whisk.hpp>
 
-namespace po = boost::program_options;
-
 using namespace Whisk;
 
 std::unique_ptr<Context> Whisk::wh;
