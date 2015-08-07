@@ -5,6 +5,7 @@
 #include <boost/program_options.hpp>
 
 #include <whisk/driver.hpp>
+#include <whisk/metrics.hpp>
 
 namespace Whisk
 {
@@ -20,6 +21,7 @@ namespace Whisk
     // Map of all configuration variables
     po::variables_map vm;
     std::unique_ptr<Driver> driver;
+    Metrics metrics;
   private:
   };
 

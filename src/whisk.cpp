@@ -174,6 +174,7 @@ void Context::init(int &argc, char *argv[])
       po::collect_unrecognized(parsed.options, po::include_positional);
 
     wh->driver->init(to_pass_further);
+    wh->metrics.init();
   }
   catch (std::exception &e)
   {
