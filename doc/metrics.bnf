@@ -1,0 +1,10 @@
+<FILE> ::= [<PARAMETERS>] <PROC_TYPES> <TASK_DESC>
+<PARAMETERS> ::= '{' <PARAMETER> | <PARAMETER> ',' <PARAMETERS> '}'
+<PARAMETER> ::= <ATTR> <VAL>
+<ATTR> ::= <string>
+<VAL> ::= <double>
+<PROC_TYPES> ::= 'TYPES,' <PROC_TYPE> (',' <PROC_TYPE>)*
+<PROC_TYPE> ::= <ATTR> [<PARAMETERS>]
+<TASKS_DESC> ::= <TASK_DESC> (',' <TASK_DESC>)*
+<TASK_DESC> ::= (<COSTS> | <PARAMETERS>) (',' (<COSTS> | <PARAMETERS>))*
+<COSTS> ::= <double>
