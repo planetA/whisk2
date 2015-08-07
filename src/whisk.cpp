@@ -106,6 +106,7 @@ parse_command_line(int argc, char *argv[],
 
   po::store(parsed, wh->vm);
   po::notify(wh->vm);
+  return parsed;
 }
 
 void Context::init(int &argc, char *argv[])
@@ -156,7 +157,11 @@ void Context::init(int &argc, char *argv[])
       return;
     }
 
-    po::parsed_options parsed = po::command_line_parser(argc, argv).
+    // Parse driver specific options
+    std::vector<std::string> to_pass_further =
+      po::collect_unrecognized(parsed.options, po::include_positional);
+
+    parsed = po::command_line_parser(to_pass_further).
       options(cmdline_options).
       allow_unregistered().
       run();
@@ -164,7 +169,8 @@ void Context::init(int &argc, char *argv[])
     po::store(parsed, wh->vm);
     po::notify(wh->vm);
 
-    std::vector<std::string> to_pass_further =
+    // Pass further what is left
+    to_pass_further =
       po::collect_unrecognized(parsed.options, po::include_positional);
 
     wh->driver->init(to_pass_further);
