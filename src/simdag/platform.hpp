@@ -1,6 +1,7 @@
 #pragma once
 
 #include "workstations.hpp"
+#include "taskgraph.hpp"
 
 namespace Whisk {
 
@@ -17,5 +18,6 @@ namespace Whisk {
   private:
     CheckSD checksd;
     Workstations ws;
+    TaskGraph dag;
   };
 }

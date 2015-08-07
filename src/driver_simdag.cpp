@@ -21,6 +21,8 @@ void SimDagDrv::append_options(po::options_description &cmdline_options)
   drv_opt.add_options()
     ("platform,p", po::value<std::string>()->required(),
      "Set platform configuration file")
+    ("graph-type", po::value<std::string>()->default_value("dot"),
+      "Type of graph description file. Default is 'dot'")
     ;
   cmdline_options.add(drv_opt);
 }

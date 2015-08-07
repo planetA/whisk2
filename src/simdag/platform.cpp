@@ -5,6 +5,7 @@
 
 #include "platform.hpp"
 #include "workstations.hpp"
+#include "taskgraph.hpp"
 
 using namespace Whisk;
 
@@ -21,7 +22,7 @@ Platform::CheckSD::CheckSD()
 }
 
 Platform::Platform()
-  : checksd(), ws()
+  : checksd(), ws(), dag(Whisk::TaskGraph::reader())
 {
 
 }
