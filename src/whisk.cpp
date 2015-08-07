@@ -39,7 +39,9 @@ po::options_description create_options_simulation()
     ("driver,d", po::value<std::string>(), "Set simulation driver")
     ("algorithm,a", po::value<std::string>(), "Set simulation driver")
     ("time,t", po::value<std::string>(), "Set task timing configuration file")
-    ("graph,g", po::value<std::string>(), "Set DAG file")
+    ("graph,g",
+     po::value< std::vector<std::string> >()->composing()->required(),
+     "Set DAG file")
     ("sched,s", po::value<std::string>(), "Set scheduling algorithm")
     ("ccr", po::value<double>(),
      "Set communication-to-computation ration (CCR)")
