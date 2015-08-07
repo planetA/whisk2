@@ -12,7 +12,15 @@ Context::Context(int &argc, char *argv[])
 {
 }
 
-po::options_description Context::create_options_generic()
+// helpers for init function
+static inline po::options_description create_options_generic();
+static inline po::options_description create_options_simulation();
+static inline void parse_config_file(const po::options_description &);
+
+static inline po::parsed_options
+parse_command_line(int argc, char *argv[], const po::options_description &);
+
+po::options_description create_options_generic()
 {
   // Declare generic options
   po::options_description generic("Generic options");
@@ -23,7 +31,7 @@ po::options_description Context::create_options_generic()
   return generic;
 }
 
-po::options_description Context::create_options_simulation()
+po::options_description create_options_simulation()
 {
   // Declare options which configure general simulation parameters
   po::options_description simulation("Simulator options");
@@ -40,7 +48,7 @@ po::options_description Context::create_options_simulation()
   return simulation;
 }
 
-void Context::parse_config_file(const po::options_description & cfgfile_options)
+void parse_config_file(const po::options_description & cfgfile_options)
 {
   // Fail if user specified config file, but it is not available. Do
   // not fail if the config file is not specified and the default
@@ -83,8 +91,9 @@ void Context::parse_config_file(const po::options_description & cfgfile_options)
 
 }
 
-void Context::parse_command_line(int argc, char *argv[],
-                                 const po::options_description &cmdline_options)
+po::parsed_options
+parse_command_line(int argc, char *argv[],
+                   const po::options_description &cmdline_options)
 {
   // Use basic_command_line_parser to allow unrecognized options
   // Parse command line options
@@ -131,7 +140,7 @@ void Context::init(int &argc, char *argv[])
     po::options_description config_file_options;
     config_file_options.add(simulation);
 
-    parse_command_line(argc, argv, cmdline_options);
+    po::parsed_options parsed = parse_command_line(argc, argv, cmdline_options);
     parse_config_file(config_file_options);
 
     // Create driver and parse driver's options
