@@ -2,6 +2,7 @@
 
 #include <map>
 #include <vector>
+#include <fstream>
 
 namespace Whisk
 {
@@ -23,6 +24,7 @@ namespace Whisk
   {
     bool active;
     std::vector<TaskDesc> tasks;
+    void read_file(std::ifstream &ifs);
   public:
     Metrics();
     void init();
