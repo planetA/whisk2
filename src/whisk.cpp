@@ -43,6 +43,7 @@ po::options_description create_options_simulation()
      po::value< std::vector<std::string> >()->composing()->required(),
      "Set DAG file")
     ("sched,s", po::value<std::string>(), "Set scheduling algorithm")
+    ("metrics,m", po::value<std::string>(), "Set metrics file")
     ("ccr", po::value<double>(),
      "Set communication-to-computation ration (CCR)")
     ("cv", po::value<double>(), "Set coefficient of variation (CV)")
